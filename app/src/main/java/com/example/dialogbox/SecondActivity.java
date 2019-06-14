@@ -2,6 +2,7 @@ package com.example.dialogbox;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -33,5 +34,18 @@ public class SecondActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Date: " + dateMessage,
                 Toast.LENGTH_SHORT).show();
+    }
+
+    public void showtimeAlert(View view) {
+        DialogFragment newFragment = new BlankFragment();
+        newFragment.show(getSupportFragmentManager(),"timePicker");
+    }
+
+    public void processTimePickerResult(int hourOfDay, int minute) {
+        String hrs = Integer.toString(hourOfDay);
+        String minutes = Integer.toString(minute);
+        String timeMessage = (hrs + "/" +minutes);
+
+        Toast.makeText(this, "Time: " +timeMessage, Toast.LENGTH_SHORT).show();
     }
 }
